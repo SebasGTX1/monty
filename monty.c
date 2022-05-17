@@ -8,7 +8,8 @@
 
 int main(int ac, char *av[])
 {
-	char **tokens;
+	char **tokens = NULL;
+	int i = 0;
 
 	if (ac != 2)
 	{
@@ -17,5 +18,11 @@ int main(int ac, char *av[])
 	}
 	tokens = tokenizer(av[1]);
 	interpreter(tokens);
+	while (tokens[i])
+	{
+		free(tokens[i]);
+		i++;
+	}
+	free(tokens);
 	return (0);
 }
