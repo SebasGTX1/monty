@@ -40,8 +40,8 @@ int main(int ac, char *av[])
 			token = strtok(NULL, "\n");
 			i++;
 		}
+		tokens[i] = NULL;
 	}
-	tokens[i] = NULL;
 	close(fd);
 	interpreter(tokens);
 	free(tokens), free(buffer);

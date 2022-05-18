@@ -26,38 +26,41 @@ void free_stack(stack_t *stack)
 void interpreter(char **instructions)
 {
 	instruction_t array[] = INSTRUCTIONS;
-
 	int i = 0, j = 0, bol = 0;
 	unsigned int line = 1;
 	void (*func)(stack_t **stack, unsigned int line_number);
 	stack_t *stack = NULL;
 	char *opcode, *arg;
 
+	argument = "SUCCESS";
 	while (instructions[j])
 	{
 		opcode = strtok(instructions[j], " #\t");
-		arg = strtok(NULL, " \t#");
-		while (i < 7)
+		if (opcode)
 		{
-			if (strcmp(opcode, array[i].opcode) == 0)
+			arg = strtok(NULL, " \t#");
+			while (i < 7)
 			{
-				if (strcmp(opcode, array[0].opcode) == 0)
-					argument = arg;
-				func = array[i].f;
-				bol = 1;
+				if (strcmp(opcode, array[i].opcode) == 0)
+				{
+					if (strcmp(opcode, array[0].opcode) == 0)
+						argument = arg;
+					func = array[i].f;
+					bol = 1;
+				}
+				if (bol)
+					break;
+				i++;
 			}
 			if (bol)
-				break;
-			i++;
-		}
-		if (bol)
-			func(&stack, line);
-		else
-		{
-			dprintf(STDERR_FILENO, "L%d: unknown instruction %s\n", line, opcode);
-			free_stack(stack);
-			argument = "FAIL";
-			return;
+				func(&stack, line);
+			else
+			{
+				dprintf(STDERR_FILENO, "L%d: unknown instruction %s\n", line, opcode);
+				free_stack(stack);
+				argument = "FAIL";
+				return;
+			}
 		}
 		j++, line++, i = 0, bol = 0;
 	}
