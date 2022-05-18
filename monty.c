@@ -45,5 +45,7 @@ int main(int ac, char *av[])
 	interpreter(tokens);
 	free(tokens);
 	free(buffer);
+	if (strcmp(argument, "FAIL") == 0)
+		exit(EXIT_FAILURE);
 	return (0);
 }

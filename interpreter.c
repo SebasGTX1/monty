@@ -56,7 +56,8 @@ void interpreter(char **instructions)
 		{
 			dprintf(STDERR_FILENO, "L%d: unknown instruction %s\n", line, opcode);
 			free_stack(stack);
-			exit(EXIT_FAILURE);
+			argument = "FAIL";
+			return;
 		}
 		j++, line++, i = 0, bol = 0;
 	}

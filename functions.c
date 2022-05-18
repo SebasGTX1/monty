@@ -16,7 +16,8 @@ void push(stack_t **stack, unsigned int line_number)
 		if (strcmp(argument, "0") != 0 && atoi(arg_copy) == 0)
 		{
 			dprintf(STDERR_FILENO, "L%d: usage: push integer\n", line_number);
-			exit(EXIT_FAILURE);
+			argument = "FAIL";
+			return;
 		}
 	}
 	number = atoi(argument);
@@ -24,7 +25,8 @@ void push(stack_t **stack, unsigned int line_number)
 	if (!new)
 	{
 		dprintf(STDERR_FILENO, "Error: malloc failed\n");
-		exit(EXIT_FAILURE);
+		argument = "FAIL";
+		return;
 	}
 	new->n = number;
 	new->next = *stack;
@@ -63,7 +65,8 @@ void pint(stack_t **stack, unsigned int line_number)
 	if (!*stack)
 	{
 		dprintf(STDERR_FILENO, "L%d: can't pint, stack empty\n", line_number);
-		exit(EXIT_FAILURE);
+		argument = "FAIL";
+		return;
 	}
 	printf("%d\n", (*stack)->n);
 }
@@ -80,7 +83,8 @@ void pop(stack_t **stack, unsigned int line_number)
 	if (!*stack)
 	{
 		dprintf(STDERR_FILENO, "L%d: can't pop an empty stack\n", line_number);
-		exit(EXIT_FAILURE);
+		argument = "FAIL";
+		return;
 	}
 	save = (*stack)->next;
 	free(*stack);
@@ -96,4 +100,5 @@ void nop(stack_t **stack, unsigned int line_number)
 {
 	UNUSED(line_number);
 	UNUSED(stack);
+	argument = "nothing";
 }
