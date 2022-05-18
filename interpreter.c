@@ -32,6 +32,7 @@ void interpreter(char **instructions)
 	stack_t *stack = NULL;
 	char *opcode, *arg;
 
+	argument = "SCSS";
 	while (instructions[j])
 	{
 		opcode = strtok(instructions[j], " #\t");
@@ -61,8 +62,7 @@ void interpreter(char **instructions)
 			{
 				dprintf(STDERR_FILENO, "L%d: unknown instruction %s\n", line, opcode);
 				free_stack(stack), argument = "FAIL";
-				return;
-			}
+				return; }
 		} j++, line++, i = 0, bol = 0;
 	} free_stack(stack);
 }

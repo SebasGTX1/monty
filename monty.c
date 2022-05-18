@@ -12,7 +12,6 @@ int main(int ac, char *av[])
 	ssize_t read_val;
 	char *buffer = NULL, *token = NULL, **tokens = NULL;
 
-	argument = "SUCCESS";
 	if (ac != 2)
 	{
 		dprintf(STDERR_FILENO, "USAGE: monty file\n");
@@ -25,8 +24,7 @@ int main(int ac, char *av[])
 	{
 		dprintf(STDERR_FILENO, "Error: Can't open file %s\n", av[1]);
 		free(buffer), free(tokens);
-		exit(EXIT_FAILURE);
-	}
+		exit(EXIT_FAILURE); }
 	while ((read_val = read(fd, buffer, buffsize)) > 0)
 	{
 		token = strtok(buffer, "\n");
@@ -39,13 +37,15 @@ int main(int ac, char *av[])
 			}
 			tokens[i] = token;
 			token = strtok(NULL, "\n");
-			i++;
-		}
-		tokens[i] = NULL;
-	}
+			i++; }
+		tokens[i] = NULL; }
 	close(fd), interpreter(tokens);
-	free(tokens), free(buffer);
+	free(tokens);
 	if (strcmp(argument, "FAIL") == 0)
+	{
+		free(buffer);
 		exit(EXIT_FAILURE);
+	}
+	free(buffer);
 	return (0);
 }
