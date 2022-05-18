@@ -35,10 +35,10 @@ void interpreter(char **instructions)
 	argument = "SCSS";
 	while (instructions[j])
 	{
-		opcode = strtok(instructions[j], " \t");
+		opcode = strtok(instructions[j], " \n\t");
 		if (opcode && opcode[0] != '#')
 		{
-			arg = strtok(NULL, " \t#");
+			arg = strtok(NULL, " \n\t#");
 			while (i < 7)
 			{
 				if (strcmp(opcode, array[i].opcode) == 0)
