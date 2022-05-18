@@ -13,7 +13,7 @@ void add(stack_t **stack, unsigned int line_number)
 		temp = (*stack)->next;
 	if (!temp)
 	{
-		dprintf(STDERR_FILENO, "L%d: can't add, stack too short", line_number);
+		dprintf(STDERR_FILENO, "L%d: can't add, stack too short\n", line_number);
 		argument = "FAIL";
 		free_stack(*stack);
 		return;
@@ -40,7 +40,7 @@ void swap(stack_t **stack, unsigned int line_number)
 	}
 	else
 	{
-		dprintf(STDERR_FILENO, "L%d: can't swap, stack too short", line_number);
+		dprintf(STDERR_FILENO, "L%d: can't swap, stack too short\n", line_number);
 		argument = "FAIL";
 		free_stack(*stack);
 		return;
