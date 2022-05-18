@@ -25,7 +25,7 @@ void _free(char **tokens)
 
 int main(int ac, char *av[])
 {
-	int buffsize = 1024, i = 0;
+	int buffsize = 5024, i = 0;
 	ssize_t read_val = 0;
 	size_t bytes = 1;
 	char *buffer = NULL, **tokens = NULL;
