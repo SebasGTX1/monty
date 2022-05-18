@@ -8,19 +8,14 @@
 void push(stack_t **stack, unsigned int line_number)
 {
 	stack_t *new;
-	int number, i = 0;
-	char *cp = argument;
+	int number;
 
-
-	for (; cp[i]; cp++)
+	if (atoi(argument) == 0 && strcmp(argument, "0") != 0 &&
+			strcmp(argument, "-0") != 0)
 	{
-		if (strcmp(argument, "0") != 0 && atoi(cp) == 0 &&
-				strcmp(argument, "-0") != 0)
-		{
-			dprintf(STDERR_FILENO, "L%d: usage: push integer\n", line_number);
-			argument = "FAIL";
-			return;
-		}
+		dprintf(STDERR_FILENO, "L%d: usage: push integer\n", line_number);
+		argument = "FAIL";
+		return;
 	}
 	number = atoi(argument);
 	new = malloc(sizeof(stack_t));
