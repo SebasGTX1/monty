@@ -8,15 +8,18 @@
 void push(stack_t **stack, unsigned int line_number)
 {
 	stack_t *new;
-	int number;
+	int number, i = 0;
+	char *arg_copy = argument;
 
-	if (strcmp(argument, "0") != 0 && atoi(argument) == 0)
+	for (; arg_copy[i]; arg_copy++)
 	{
-		dprintf(STDERR_FILENO, "L%d: usage: push integer\n", line_number);
-		exit(EXIT_FAILURE);
+		if (strcmp(argument, "0") != 0 && atoi(arg_copy) == 0)
+		{
+			dprintf(STDERR_FILENO, "L%d: usage: push integer\n", line_number);
+			exit(EXIT_FAILURE);
+		}
 	}
 	number = atoi(argument);
-
 	new = malloc(sizeof(stack_t));
 	if (!new)
 	{

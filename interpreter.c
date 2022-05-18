@@ -36,8 +36,7 @@ void interpreter(char **instructions)
 	while (instructions[j])
 	{
 		opcode = strtok(instructions[j], " #\t");
-		arg = strtok(NULL, " #");
-
+		arg = strtok(NULL, " \t#");
 		while (i < 7)
 		{
 			if (strcmp(opcode, array[i].opcode) == 0)
