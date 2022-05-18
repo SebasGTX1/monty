@@ -23,6 +23,7 @@ int main(int ac, char *av[])
 	if (fd == -1)
 	{
 		dprintf(STDERR_FILENO, "Error: Can't open file %s\n", av[1]);
+		free(buffer), free(tokens);
 		exit(EXIT_FAILURE);
 	}
 	while ((read_val = read(fd, buffer, buffsize)) > 0)
@@ -43,8 +44,7 @@ int main(int ac, char *av[])
 	tokens[i] = NULL;
 	close(fd);
 	interpreter(tokens);
-	free(tokens);
-	free(buffer);
+	free(tokens), free(buffer);
 	if (strcmp(argument, "FAIL") == 0)
 		exit(EXIT_FAILURE);
 	return (0);
