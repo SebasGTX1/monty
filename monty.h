@@ -46,4 +46,5 @@ char **tokenizer(const char *filename);
 void push(stack_t **stack, unsigned int line_number);
 void pall(stack_t **stack, unsigned int line_number);
 void interpreter(char **instructions);
+void *_calloc(unsigned int nmemb, unsigned int size);
 #endif /* _MONTY_H_ */

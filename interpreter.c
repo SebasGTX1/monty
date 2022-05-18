@@ -1,5 +1,23 @@
 #include "monty.h"
 /**
+ * free_stack - frees a stack
+ * @stack: stack to be freed
+ * Return: no return
+ */
+void free_stack(stack_t *stack)
+{
+	stack_t *temp;
+
+	if (stack)
+	{
+		while ((temp = stack))
+		{
+			stack = stack->next;
+			free(temp);
+		}
+	}
+}
+/**
  * interpreter - interprets and excecute
  * each intruction line
  * @instructions: array of instructions
@@ -43,8 +61,7 @@ void interpreter(char **instructions)
 			dprintf(STDERR_FILENO, "L%d: unknown instruction %s\n", line, opcode);
 			exit(EXIT_FAILURE);
 		}
-		j++;
-		line++;
-		i = 0, bol = 0;
+		j++, line++, i = 0, bol = 0;
 	}
+	free_stack(stack);
 }
