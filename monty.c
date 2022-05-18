@@ -1,5 +1,22 @@
 #include "monty.h"
 /**
+ * _free - frees the tokens
+ * @tokens: array of tokens
+ * Return: no return
+ */
+void _free(char **tokens)
+{
+	int i = 0;
+
+	while (tokens[i])
+	{
+		free(tokens[i]);
+		i++;
+	}
+	free(tokens);
+}
+
+/**
  * main - starts the monty interpreter
  * @ac: number of arguments
  * @av: arguments vector
@@ -8,44 +25,44 @@
 
 int main(int ac, char *av[])
 {
-	int fd, buffsize = 1024, i = 0;
-	ssize_t read_val;
-	char *buffer = NULL, *token = NULL, **tokens = NULL;
+	int buffsize = 1024, i = 0;
+	ssize_t read_val = 0;
+	size_t bytes = 1;
+	char *buffer = NULL, **tokens = NULL;
+	FILE *fd;
 
 	if (ac != 2)
 	{
 		dprintf(STDERR_FILENO, "USAGE: monty file\n");
 		exit(EXIT_FAILURE);
 	}
-	buffer = _calloc(buffsize, 1);
 	tokens = malloc(buffsize * sizeof(char *));
-	fd = open(av[1], O_RDONLY);
-	if (fd == -1)
+	fd = fopen(av[1], "r");
+	if (!fd)
 	{
 		dprintf(STDERR_FILENO, "Error: Can't open file %s\n", av[1]);
 		free(buffer), free(tokens);
 		exit(EXIT_FAILURE); }
-	while ((read_val = read(fd, buffer, buffsize)) > 0)
+	while (read_val != EOF)
 	{
-		token = strtok(buffer, "\n");
-		while (token)
+		buffer = NULL;
+		read_val = getline(&buffer, &bytes, fd);
+		if (read_val == -1)
 		{
-			if (i >= buffsize)
-			{
-				dprintf(STDERR_FILENO, "Error: malloc failed\n");
-				exit(EXIT_FAILURE);
-			}
-			tokens[i] = token;
-			token = strtok(NULL, "\n");
-			i++; }
-		tokens[i] = NULL; }
-	close(fd), interpreter(tokens);
-	free(tokens);
+			free(buffer);
+			break; }
+		tokens[i] = _calloc(1024, 1);
+		tokens[i] = strcpy(tokens[i], buffer);
+		i++;
+		free(buffer); }
+	tokens[i] = NULL;
+	interpreter(tokens);
+	_free(tokens);
 	if (strcmp(argument, "FAIL") == 0)
 	{
-		free(buffer);
+		fclose(fd);
 		exit(EXIT_FAILURE);
 	}
-	free(buffer);
+	fclose(fd);
 	return (0);
 }
