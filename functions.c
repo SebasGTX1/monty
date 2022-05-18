@@ -9,15 +9,16 @@ void push(stack_t **stack, unsigned int line_number)
 {
 	stack_t *new;
 	int number, i = 0;
-	char *arg_copy = argument;
+	char *cp = argument;
 
-	for (; arg_copy[i]; arg_copy++)
+
+	for (; cp[i]; cp++)
 	{
-		if (strcmp(argument, "0") != 0 && atoi(arg_copy) == 0)
+		if (strcmp(argument, "0") != 0 && atoi(cp) == 0 &&
+				strcmp(argument, "-0") != 0)
 		{
 			dprintf(STDERR_FILENO, "L%d: usage: push integer\n", line_number);
 			argument = "FAIL";
-			free_stack(*stack);
 			return;
 		}
 	}

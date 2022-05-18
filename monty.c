@@ -25,25 +25,27 @@ void _free(char **tokens)
 
 int main(int ac, char *av[])
 {
-	int buffsize = 10024, i = 0;
+	int i = 0;
+	unsigned int line = 1;
 	ssize_t read_val = 0;
 	size_t bytes = 1;
-	char *buffer = NULL, **tokens = NULL;
+	char *buffer = NULL, *token = NULL;
 	FILE *fd;
+	stack_t *stack = NULL;
 
+	argument = "SCSS";
 	if (ac != 2)
 	{
 		dprintf(STDERR_FILENO, "USAGE: monty file\n");
 		exit(EXIT_FAILURE);
 	}
-	tokens = malloc(buffsize * sizeof(char *));
 	fd = fopen(av[1], "r");
 	if (!fd)
 	{
 		dprintf(STDERR_FILENO, "Error: Can't open file %s\n", av[1]);
-		free(buffer), free(tokens);
+		free(buffer), free(token);
 		exit(EXIT_FAILURE); }
-	while (read_val != EOF)
+	while (read_val != EOF && (strcmp(argument, "FAIL") != 0))
 	{
 		buffer = NULL;
 		read_val = getline(&buffer, &bytes, fd);
@@ -51,18 +53,16 @@ int main(int ac, char *av[])
 		{
 			free(buffer);
 			break; }
-		tokens[i] = _calloc(1024, 1);
-		tokens[i] = strcpy(tokens[i], buffer);
-		i++;
+		token = buffer;
+		interpreter(token, line, &stack);
+		i++, line++;
 		free(buffer); }
-	tokens[i] = NULL;
-	interpreter(tokens);
-	_free(tokens);
 	if (strcmp(argument, "FAIL") == 0)
 	{
 		fclose(fd);
 		exit(EXIT_FAILURE);
 	}
+	free_stack(stack);
 	fclose(fd);
 	return (0);
 }

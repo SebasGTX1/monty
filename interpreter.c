@@ -20,22 +20,21 @@ void free_stack(stack_t *stack)
 /**
  * interpreter - interprets and excecute
  * each intruction line
- * @instructions: array of instructions
+ * @instruction: instruction to be interpreted
+ * @stack: stack
+ * @line: line number
  * Return: Nothing
  */
-void interpreter(char **instructions)
+void interpreter(char *instruction, unsigned int line, stack_t **stack)
 {
 	instruction_t array[] = INSTRUCTIONS;
-	int i = 0, j = 0, bol = 0;
-	unsigned int line = 1;
+	int i = 0, bol = 0;
 	void (*func)(stack_t **stack, unsigned int line_number);
-	stack_t *stack = NULL;
 	char *opcode, *arg;
 
-	argument = "SCSS";
-	while (instructions[j])
+	if (instruction)
 	{
-		opcode = strtok(instructions[j], " \n\t");
+		opcode = strtok(instruction, " \n\t");
 		if (opcode && opcode[0] != '#')
 		{
 			arg = strtok(NULL, " \n\t#");
@@ -54,15 +53,15 @@ void interpreter(char **instructions)
 			}
 			if (bol)
 			{
-				func(&stack, line);
+				func(stack, line);
 				if (strcmp(argument, "FAIL") == 0)
 					return;
 				argument = "reset"; }
 			else
 			{
 				dprintf(STDERR_FILENO, "L%d: unknown instruction %s\n", line, opcode);
-				free_stack(stack), argument = "FAIL";
+				argument = "FAIL";
 				return; }
-		} j++, line++, i = 0, bol = 0;
-	} free_stack(stack);
+		}
+	}
 }
