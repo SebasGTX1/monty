@@ -12,6 +12,16 @@
 
 char *argument;
 
+#define INSTRUCTIONS { \
+		{"push", push},\
+		{"pall", pall},\
+		{"pint", pint},\
+		{"pop", pop},\
+		{"swap", swap},\
+		{"nop", nop}, \
+		{"add", add} \
+	}
+
 /**
  * struct stack_s - doubly linked list representation of a stack (or queue)
  * @n: integer
@@ -47,4 +57,9 @@ void push(stack_t **stack, unsigned int line_number);
 void pall(stack_t **stack, unsigned int line_number);
 void interpreter(char **instructions);
 void *_calloc(unsigned int nmemb, unsigned int size);
+void nop(stack_t **stack, unsigned int line_number);
+void pop(stack_t **stack, unsigned int line_number);
+void pint(stack_t **stack, unsigned int line_number);
+void add(stack_t **stack, unsigned int line_number);
+void swap(stack_t **stack, unsigned int line_number);
 #endif /* _MONTY_H_ */
