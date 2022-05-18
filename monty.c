@@ -12,6 +12,7 @@ int main(int ac, char *av[])
 	ssize_t read_val;
 	char *buffer = NULL, *token = NULL, **tokens = NULL;
 
+	argument = "SUCCESS";
 	if (ac != 2)
 	{
 		dprintf(STDERR_FILENO, "USAGE: monty file\n");
@@ -42,8 +43,7 @@ int main(int ac, char *av[])
 		}
 		tokens[i] = NULL;
 	}
-	close(fd);
-	interpreter(tokens);
+	close(fd), interpreter(tokens);
 	free(tokens), free(buffer);
 	if (strcmp(argument, "FAIL") == 0)
 		exit(EXIT_FAILURE);

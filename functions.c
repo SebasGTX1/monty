@@ -17,6 +17,7 @@ void push(stack_t **stack, unsigned int line_number)
 		{
 			dprintf(STDERR_FILENO, "L%d: usage: push integer\n", line_number);
 			argument = "FAIL";
+			free_stack(*stack);
 			return;
 		}
 	}

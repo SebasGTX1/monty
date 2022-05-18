@@ -32,7 +32,6 @@ void interpreter(char **instructions)
 	stack_t *stack = NULL;
 	char *opcode, *arg;
 
-	argument = "SUCCESS";
 	while (instructions[j])
 	{
 		opcode = strtok(instructions[j], " #\t");
@@ -43,7 +42,7 @@ void interpreter(char **instructions)
 			{
 				if (strcmp(opcode, array[i].opcode) == 0)
 				{
-					if (strcmp(opcode, array[0].opcode) == 0)
+					if (strcmp(opcode, array[0].opcode) == 0 && arg)
 						argument = arg;
 					func = array[i].f;
 					bol = 1;
@@ -53,16 +52,17 @@ void interpreter(char **instructions)
 				i++;
 			}
 			if (bol)
+			{
 				func(&stack, line);
+				if (strcmp(argument, "FAIL") == 0)
+					return;
+			}
 			else
 			{
 				dprintf(STDERR_FILENO, "L%d: unknown instruction %s\n", line, opcode);
-				free_stack(stack);
-				argument = "FAIL";
+				free_stack(stack), argument = "FAIL";
 				return;
 			}
-		}
-		j++, line++, i = 0, bol = 0;
-	}
-	free_stack(stack);
+		} j++, line++, i = 0, bol = 0;
+	} free_stack(stack);
 }
