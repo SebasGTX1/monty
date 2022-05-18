@@ -57,7 +57,7 @@ void interpreter(char **instructions)
 				func(&stack, line);
 				if (strcmp(argument, "FAIL") == 0)
 					return;
-			}
+				argument = "reset"; }
 			else
 			{
 				dprintf(STDERR_FILENO, "L%d: unknown instruction %s\n", line, opcode);
