@@ -35,8 +35,8 @@ void interpreter(char **instructions)
 	argument = "SCSS";
 	while (instructions[j])
 	{
-		opcode = strtok(instructions[j], " #\t");
-		if (opcode)
+		opcode = strtok(instructions[j], " \t");
+		if (opcode && opcode[0] != '#')
 		{
 			arg = strtok(NULL, " \t#");
 			while (i < 7)
