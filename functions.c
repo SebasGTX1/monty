@@ -26,15 +26,7 @@ void push(stack_t **stack, unsigned int line_number)
 		argument[0] = "FAIL";
 		return; }
 	new->n = number;
-	if (strcmp(argument[1], "stack") == 0 || !argument[1])
-	{
-		new->next = *stack;
-		new->prev = NULL;
-		if (*stack)
-			(*stack)->prev = new;
-		*stack = new;
-	}
-	else if (strcmp(argument[1], "queue") == 0)
+	if (strcmp(argument[1], "queue") == 0)
 	{
 		if (temp)
 		{
@@ -47,6 +39,14 @@ void push(stack_t **stack, unsigned int line_number)
 		else
 			*stack = new;
 	}
+	else
+	{
+		new->next = *stack;
+		new->prev = NULL;
+		if (*stack)
+			(*stack)->prev = new;
+		*stack = new;
+	} 
 }
 /**
  * pall - prints all the values on the stack,
