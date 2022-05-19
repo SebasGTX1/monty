@@ -26,14 +26,14 @@
 * queue - sets the format of the data to a queue (FIFO).
 
 ## Examples:
->Sebas:~/monty$ cat -e 00.m  
+>/monty$ cat -e 00.m  
 push 1$  
 push 2$  
 push 3$  
 pall$  
->Sebas:~/monty$ ./monty 00.m  
+>/monty$ ./monty 00.m  
 3  
 2  
 1  
->Sebas:~/monty$  
+>/monty$  
 
