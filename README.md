@@ -112,5 +112,16 @@ pall
 1  
 **/monty$**  
 
+>**PCHAR**  
+**/monty$ cat 28.m**   
+push 72  
+pchar  
+**/monty$ ./monty 28.m** 
+H
+**/monty$**
+
+
+
+
 ## How can you report an error or solve a question?
 > You can contact to authors sending a message through github accounts or an email to Sebastian Garcia <4564@holbertonschool.com> or Sebastian Carvajal <4574@hobertonschool.com>
