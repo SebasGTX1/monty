@@ -61,7 +61,8 @@ pint
 3  
 **/monty$**  
 
->**/monty$ cat 07.m**   
+>**POP**  
+**/monty$ cat 07.m**   
 push 1  
 push 2  
 push 3  
@@ -81,7 +82,8 @@ pall
 1  
 **/monty$** 
 
->**/monty$ cat 12.m**   
+>**ADD**  
+**/monty$ cat 12.m**   
 push 1  
 push 2  
 push 3  
@@ -96,7 +98,8 @@ pall
 1
 **/monty$**
 
->**/monty$ cat 19.m**   
+>**SUB**  
+**/monty$ cat 19.m**   
 push 1  
 push 2  
 push 10  
