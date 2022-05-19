@@ -33,7 +33,7 @@ int main(int ac, char *av[])
 	FILE *fd;
 	stack_t *stack = NULL;
 
-	argument[0] = "SCSS";
+	argument[0] = "SCSS", argument[1] = "SCSS";
 	if (ac != 2)
 	{
 		dprintf(STDERR_FILENO, "USAGE: monty file\n");
