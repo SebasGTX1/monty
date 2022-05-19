@@ -4,7 +4,7 @@
 ## How does it work?
 >Monty's interpreter receives a .m file with line-by-line instructions. Upon receiving the file, the interpreter reads line by line, interprets them and executes them until all the instructions are finished or until an erroneous instruction appears, exiting and indicating the error.
 
->In particular, this Monty interpreter executes instructions related to a doubly linked list in order to create stacks and queues.
+>In particular, this Monty interpreter executes instructions related to a doubly linked list in order to create and manage stacks and queues.
 
 >Monty byte code files can contain blank lines (empty or made of spaces only, and any additional text after the opcode or its required argument is not taken into account.
 
