@@ -1,11 +1,11 @@
 #include "monty.h"
 /**
- * interpreter - interprets and excecute
- * each intruction line
- * @instruction: instruction to be interpreted
- * @stack: stack
- * @line: line number
- * Return: Nothing
+ * interpreter - interprets and executes
+ * each intruction line.
+ * @instruction: instruction to be interpreted.
+ * @stack: stack.
+ * @line: line number.
+ * Return: Nothing.
  */
 void interpreter(char *instruction, unsigned int line, stack_t **stack)
 {
