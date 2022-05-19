@@ -1,23 +1,5 @@
 #include "monty.h"
 /**
- * free_stack - frees a stack
- * @stack: stack to be freed
- * Return: no return
- */
-void free_stack(stack_t *stack)
-{
-	stack_t *temp;
-
-	if (stack)
-	{
-		while ((temp = stack))
-		{
-			stack = stack->next;
-			free(temp);
-		}
-	}
-}
-/**
  * interpreter - interprets and excecute
  * each intruction line
  * @instruction: instruction to be interpreted
