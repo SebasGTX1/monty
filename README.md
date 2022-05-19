@@ -6,7 +6,25 @@
 
 >In particular, this Monty interpreter executes instructions related to a doubly linked list in order to create and manage stacks and queues.
 
->Monty byte code files can contain blank lines (empty or made of spaces only, and any additional text after the opcode or its required argument is not taken into account.
+>Monty byte code files can contain blank lines (empty or made of spaces only, and any additional text after the opcode or its required argument is not taken into account:  
+
+>**/monty$ cat -e 001.m**  
+push 0 Push 0 onto the stack$  
+push 1 Push 1 onto the stack$  
+$  
+push 2$   
+  push 3$  
+                   pall    $  
+$  
+$  
+                           $  
+push 4$  
+$  
+    push 5    $  
+      push    6        $  
+$  
+pall This is the end of our program. Monty is awesome!$  
+**/monty$** 
 
 ## Compilation & Output:
 >The code was compiled this way:  
