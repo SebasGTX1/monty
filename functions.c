@@ -8,10 +8,12 @@
 void push(stack_t **stack, unsigned int line_number)
 {
 	stack_t *new;
-	int number;
+	int number, bol = 0, i = 0;
 
-	if (atoi(argument) == 0 && strcmp(argument, "0") != 0 &&
-			strcmp(argument, "-0") != 0)
+	for (; argument[i]; i++)
+		bol = _isalpha((int)argument[i]);
+
+	if (bol != 0)
 	{
 		dprintf(STDERR_FILENO, "L%d: usage: push integer\n", line_number);
 		argument = "FAIL";

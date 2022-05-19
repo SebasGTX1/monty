@@ -60,8 +60,8 @@ int main(int ac, char *av[])
 	if (strcmp(argument, "FAIL") == 0)
 	{
 		fclose(fd);
-		exit(EXIT_FAILURE);
-	}
+		free_stack(stack);
+		exit(EXIT_FAILURE); }
 	free_stack(stack);
 	fclose(fd);
 	return (0);
