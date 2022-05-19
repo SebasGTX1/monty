@@ -23,7 +23,10 @@ char *argument;
 		{"sub", sub},\
 		{"div", _div},\
 		{"mul", mul},\
-		{"mod", mod} \
+		{"mod", mod},\
+		{"pchar", pchar},\
+		{"pstr", pstr},\
+		{"rotl", rotl} \
 	}
 
 /**
