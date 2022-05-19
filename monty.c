@@ -33,7 +33,7 @@ int main(int ac, char *av[])
 	FILE *fd;
 	stack_t *stack = NULL;
 
-	argument = "SCSS";
+	argument[0] = "SCSS";
 	if (ac != 2)
 	{
 		dprintf(STDERR_FILENO, "USAGE: monty file\n");
@@ -45,7 +45,7 @@ int main(int ac, char *av[])
 		dprintf(STDERR_FILENO, "Error: Can't open file %s\n", av[1]);
 		free(buffer), free(token);
 		exit(EXIT_FAILURE); }
-	while (read_val != EOF && (strcmp(argument, "FAIL") != 0))
+	while (read_val != EOF && (strcmp(argument[0], "FAIL") != 0))
 	{
 		buffer = NULL;
 		read_val = getline(&buffer, &bytes, fd);
@@ -57,7 +57,7 @@ int main(int ac, char *av[])
 		interpreter(token, line, &stack);
 		i++, line++;
 		free(buffer); }
-	if (strcmp(argument, "FAIL") == 0)
+	if (strcmp(argument[0], "FAIL") == 0)
 	{
 		fclose(fd);
 		free_stack(stack);

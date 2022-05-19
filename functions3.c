@@ -15,13 +15,13 @@ void mod(stack_t **stack, unsigned int line_number)
 	if (!temp)
 	{
 		dprintf(STDERR_FILENO, "L%d: can't mod, stack too short\n", line_number);
-		argument = "FAIL";
+		argument[0] = "FAIL";
 		return;
 	}
 	if ((*stack)->n == 0)
 	{
 		dprintf(STDERR_FILENO, "L%d: division by zero\n", line_number);
-		argument = "FAIL";
+		argument[0] = "FAIL";
 		return;
 	}
 	temp->n %= (*stack)->n;
@@ -39,13 +39,13 @@ void pchar(stack_t **stack, unsigned int line)
 	if (!*stack)
 	{
 		dprintf(STDERR_FILENO, "L%d: can't pchar, stack empty\n", line);
-		argument = "FAIL";
+		argument[0] = "FAIL";
 		return;
 	}
 	if ((*stack)->n <= 0 || (*stack)->n >= 127)
 	{
 		dprintf(STDERR_FILENO, "L%d: can't pchar, value out of range\n", line);
-		argument = "FAIL";
+		argument[0] = "FAIL";
 		return;
 	}
 	printf("%c\n", (*stack)->n);

@@ -38,12 +38,12 @@ void interpreter(char *instruction, unsigned int line, stack_t **stack)
 		if (opcode && opcode[0] != '#')
 		{
 			arg = strtok(NULL, " \n\t#");
-			while (i < 15)
+			while (i < 17)
 			{
 				if (strcmp(opcode, array[i].opcode) == 0)
 				{
 					if (strcmp(opcode, array[0].opcode) == 0 && arg)
-						argument = arg;
+						argument[0] = arg;
 					func = array[i].f;
 					bol = 1;
 				}
@@ -54,13 +54,13 @@ void interpreter(char *instruction, unsigned int line, stack_t **stack)
 			if (bol)
 			{
 				func(stack, line);
-				if (strcmp(argument, "FAIL") == 0)
+				if (strcmp(argument[0], "FAIL") == 0)
 					return;
-				argument = "reset"; }
+				argument[0] = "reset"; }
 			else
 			{
 				dprintf(STDERR_FILENO, "L%d: unknown instruction %s\n", line, opcode);
-				argument = "FAIL";
+				argument[0] = "FAIL";
 				return; }
 		}
 	}
