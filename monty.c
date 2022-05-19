@@ -1,22 +1,5 @@
 #include "monty.h"
 /**
- * _free - frees the tokens
- * @tokens: array of tokens
- * Return: no return
- */
-void _free(char **tokens)
-{
-	int i = 0;
-
-	while (tokens[i])
-	{
-		free(tokens[i]);
-		i++;
-	}
-	free(tokens);
-}
-
-/**
  * main - starts the monty interpreter
  * @ac: number of arguments
  * @av: arguments vector
