@@ -26,31 +26,31 @@
 * queue - sets the format of the data to a queue (FIFO).
 
 ## Examples:
->/monty$ cat -e 00.m  
+>**/monty$ cat -e 00.m**  
 push 1$  
 push 2$  
 push 3$  
 pall$  
->/monty$ ./monty 00.m  
+**/monty$ ./monty 00.m**  
 3  
 2  
 1  
->/monty$
+**/monty$**  
 
->/monty$ cat 06.m  
+>**/monty$ cat 06.m**  
 push 1  
 pint  
 push 2  
 pint  
 push 3  
 pint  
->/monty$ ./monty 06.m 
-1
-2
-3
->/monty$ 
+**/monty$ ./monty 06.m**  
+1  
+2  
+3  
+**/monty$**  
 
->/monty$ cat 07.m   
+>**/monty$ cat 07.m**   
 push 1  
 push 2  
 push 3  
@@ -61,12 +61,12 @@ pop
 pall  
 pop  
 pall  
->/monty$ ./monty 07.m   
+**/monty$ ./monty 07.m**   
 3  
 2  
 1  
 2  
 1  
 1  
-/monty$ 
+**/monty$** 
 
