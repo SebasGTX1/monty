@@ -70,3 +70,5 @@ pall
 1  
 **/monty$** 
 
+## How can you report an error or solve a question?
+> You can contact to authors sending a message through github accounts or an email to Sebastian Garcia <4564@holbertonschool.com> or Sebastian Carvajal <4574@hobertonschool.com>
