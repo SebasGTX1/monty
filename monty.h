@@ -26,7 +26,8 @@ char *argument;
 		{"mod", mod},\
 		{"pchar", pchar},\
 		{"pstr", pstr},\
-		{"rotl", rotl} \
+		{"rotl", rotl},\
+		{"rotr", rotr} \
 	}
 
 /**

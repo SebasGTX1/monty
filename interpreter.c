@@ -38,7 +38,7 @@ void interpreter(char *instruction, unsigned int line, stack_t **stack)
 		if (opcode && opcode[0] != '#')
 		{
 			arg = strtok(NULL, " \n\t#");
-			while (i < 14)
+			while (i < 15)
 			{
 				if (strcmp(opcode, array[i].opcode) == 0)
 				{

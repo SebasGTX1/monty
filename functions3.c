@@ -95,3 +95,27 @@ void rotl(stack_t **stack, unsigned int line_number)
 		free(aux);
 	}
 }
+/**
+ * rotr - rotates the stack to the bottom
+ * @stack: the stack
+ * @line_number: instruction line number
+ * Return: nothing
+ */
+void rotr(stack_t **stack, unsigned int line_number)
+{
+	stack_t *temp = *stack, *new;
+
+	UNUSED(line_number);
+	if (*stack)
+	{
+		while (temp->next)
+			temp = temp->next;
+		new = malloc(sizeof(stack_t));
+		new->n = temp->n;
+		temp->prev->next = NULL;
+		free(temp);
+		new->next = *stack;
+		(*stack)->prev = new;
+		*stack = new;
+	}
+}
