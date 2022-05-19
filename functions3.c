@@ -106,7 +106,7 @@ void rotr(stack_t **stack, unsigned int line_number)
 	stack_t *temp = *stack, *new;
 
 	UNUSED(line_number);
-	if (*stack)
+	if (*stack && (*stack)->next)
 	{
 		while (temp->next)
 			temp = temp->next;
