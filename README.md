@@ -94,5 +94,18 @@ pall
 1
 **/monty$**
 
+>**/monty$ cat 19.m**   
+push 1  
+push 2  
+push 10  
+push 3  
+sub  
+pall  
+**/monty$ ./monty 19.m**   
+7  
+2  
+1  
+**/monty$**  
+
 ## How can you report an error or solve a question?
 > You can contact to authors sending a message through github accounts or an email to Sebastian Garcia <4564@holbertonschool.com> or Sebastian Carvajal <4574@hobertonschool.com>
