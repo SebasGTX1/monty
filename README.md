@@ -6,6 +6,13 @@
 
 >In particular, this Monty interpreter executes instructions related to a doubly linked list.
 
+## Compilation & Output:
+>The code was compiled this way:  
+$ gcc -Wall -Werror -Wextra -pedantic -std=gnu89 *.c -o monty
+
+>The output is printed on stdout.  
+Any error message is printed on stderr
+
 ## Instructions:
 * push - pushes an element to the stack.
 * pall - prints all the values on the stack, starting from the top of the stack.
