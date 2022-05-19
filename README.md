@@ -35,7 +35,8 @@ Any error message is printed on stderr
 * queue - sets the format of the data to a queue (FIFO).
 
 ## Examples:
->**/monty$ cat -e 00.m**  
+>**PUSH & PALL**  
+**/monty$ cat -e 00.m**  
 push 1$  
 push 2$  
 push 3$  
@@ -46,7 +47,8 @@ pall$
 1  
 **/monty$**  
 
->**/monty$ cat 06.m**  
+>**PINT**  
+**/monty$ cat 06.m**  
 push 1  
 pint  
 push 2  
